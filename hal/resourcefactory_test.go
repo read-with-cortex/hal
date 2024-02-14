@@ -1,13 +1,9 @@
-// go2hal v0.6.0
-// Copyright (c) 2021 Patrick Moule
-// License: MIT
-
 package hal
 
 import (
 	"testing"
 
-	"github.com/pmoule/go2hal/hal/relationtype"
+	"github.com/read-with-cortex/hal/hal/relationtype"
 )
 
 func TestNewResourceFactory(t *testing.T) {

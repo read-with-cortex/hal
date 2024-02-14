@@ -1,14 +1,10 @@
-// go2hal v0.6.0
-// Copyright (c) 2021 Patrick Moule
-// License: MIT
-
 package hal
 
 import (
 	"errors"
 
-	"github.com/pmoule/go2hal/hal/mapping"
-	"github.com/pmoule/go2hal/hal/relationtype"
+	"github.com/read-with-cortex/hal/hal/mapping"
+	"github.com/read-with-cortex/hal/hal/relationtype"
 )
 
 // Relation provides a descriptive name to add a meaning to

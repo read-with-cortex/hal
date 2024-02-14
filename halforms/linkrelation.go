@@ -1,10 +1,6 @@
-// go2hal v0.6.0
-// Copyright (c) 2021 Patrick Moule
-// License: MIT
-
 package halforms
 
-import "github.com/pmoule/go2hal/hal"
+import "github.com/read-with-cortex/hal/hal"
 
 // NewHALFormsRelation creates a relation from provided relation name and href.
 // The contained LinkObject's type property has application/prs.hal-forms+json as

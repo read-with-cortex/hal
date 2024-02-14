@@ -1,17 +1,13 @@
-// go2hal v0.6.0
-// Copyright (c) 2021 Patrick Moule
-// License: MIT
-
 package hal
 
 import (
-	"github.com/pmoule/go2hal/hal/mapping"
-	"github.com/pmoule/go2hal/hal/relationtype"
+	"github.com/read-with-cortex/hal/hal/mapping"
+	"github.com/read-with-cortex/hal/hal/relationtype"
 )
 
 // Resource is the root element of a HAL document.
 //
-// A Resource can
+// # A Resource can
 //
 // - have links - AddLink(LinkRelation)
 //

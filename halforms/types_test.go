@@ -1,15 +1,11 @@
-// go2hal v0.6.0
-// Copyright (c) 2021 Patrick Moule
-// License: MIT
-
 package halforms
 
 import (
 	"encoding/json"
 	"testing"
 
-	"github.com/pmoule/go2hal/hal"
-	"github.com/pmoule/go2hal/hal/relationtype"
+	"github.com/read-with-cortex/hal/hal"
+	"github.com/read-with-cortex/hal/hal/relationtype"
 )
 
 func TestDocument(t *testing.T) {

@@ -1,14 +1,10 @@
-// go2hal v0.6.0
-// Copyright (c) 2021 Patrick Moule
-// License: MIT
-
 package halforms
 
 import (
 	"net/http"
 
-	"github.com/pmoule/go2hal/hal"
-	"github.com/pmoule/go2hal/hal/mapping"
+	"github.com/read-with-cortex/hal/hal"
+	"github.com/read-with-cortex/hal/hal/mapping"
 )
 
 // InlineItem is a default item for the Options inline property.

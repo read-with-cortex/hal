@@ -3,16 +3,16 @@ name: Build / Test
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Set up Go
       uses: actions/setup-go@v2
@@ -27,6 +27,3 @@ jobs:
       
     - name: Run coverage
       run: go test ./... -race -coverprofile=coverage.out -covermode=atomic
-      
-    - name: Upload coverage to Codecov
-      run: bash <(curl -s https://codecov.io/bash)

@@ -1,7 +1,3 @@
-// go2hal v0.6.0
-// Copyright (c) 2021 Patrick Moule
-// License: MIT
-
 package hal
 
 // EmbeddedProperty is a reserved name for embedding resources in HAL documents.
