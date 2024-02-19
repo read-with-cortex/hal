@@ -3,20 +3,18 @@ package halforms
 import "encoding/json"
 
 type Encoder interface {
-	ToJSON(document Document) ([]byte, error)
+	Encode(document Document) ([]byte, error)
 }
 
-type standardEncoder struct {
+type jsonEncoder struct{}
+
+// NewJSONEncoder creates a JSON encoder
+func NewJSONEncoder() Encoder {
+	return new(jsonEncoder)
 }
 
-// NewEncoder creates a JSON encoder
-func NewEncoder() Encoder {
-	return new(standardEncoder)
-}
-
-// ToJSON generates a HAL-FORMS document from provided Document.
-func (enc *standardEncoder) ToJSON(document Document) ([]byte, error) {
+// Encode generates a HAL-FORMS document from provided Document.
+func (enc *jsonEncoder) Encode(document Document) ([]byte, error) {
 	namedMap := document.ToMap()
-
 	return json.Marshal(namedMap.Content)
 }

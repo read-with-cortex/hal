@@ -6,20 +6,18 @@ import (
 
 // Encoder to encode a Resource into a valid HAL document.
 type Encoder interface {
-	ToJSON(resource Resource) ([]byte, error)
+	Encode(resource Resource) ([]byte, error)
 }
 
-type standardEncoder struct {
+type jsonEncoder struct{}
+
+// NewJSONEncoder creates a JSON encoder
+func NewJSONEncoder() Encoder {
+	return new(jsonEncoder)
 }
 
-// NewEncoder creates a JSON encoder
-func NewEncoder() Encoder {
-	return new(standardEncoder)
-}
-
-// ToJSON generates a HAL document from provided Resource.
-func (enc *standardEncoder) ToJSON(resource Resource) ([]byte, error) {
+// Encode generates a HAL document from provided Resource.
+func (enc *jsonEncoder) Encode(resource Resource) ([]byte, error) {
 	namedMap := resource.ToMap()
-
 	return json.Marshal(namedMap.Content)
 }

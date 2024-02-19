@@ -13,16 +13,16 @@ type Actor struct {
 	Name string
 }
 
-func TestEncoder(t *testing.T) {
+func TestJSONEncoder(t *testing.T) {
 	wanted := []interface{}{2, "{}"}
 
-	encoder := NewEncoder()
+	encoder := NewJSONEncoder()
 
 	resource := NewResourceObject()
-	bytes, _ := encoder.ToJSON(resource)
+	bytes, _ := encoder.Encode(resource)
 
 	if count := len(bytes); count != wanted[0] {
-		t.Errorf("ToJSON returns zero byte == %d, want %d", count, wanted[0])
+		t.Errorf("Encode returns zero byte == %d, want %d", count, wanted[0])
 	}
 
 	if value := string(bytes[:]); value != wanted[1] {
@@ -30,10 +30,10 @@ func TestEncoder(t *testing.T) {
 	}
 }
 
-func TestEncoderWithSelfLink(t *testing.T) {
+func TestJSONEncoderWithSelfLink(t *testing.T) {
 	wanted := []string{"/docwhoapi/doctors"}
 
-	encoder := NewEncoder()
+	encoder := NewJSONEncoder()
 
 	root := NewResourceObject()
 	link := &LinkObject{Href: wanted[0]}
@@ -41,7 +41,7 @@ func TestEncoderWithSelfLink(t *testing.T) {
 	self.SetLink(link)
 	root.AddLink(self)
 
-	bytes, _ := encoder.ToJSON(root)
+	bytes, _ := encoder.Encode(root)
 
 	var decoded interface{}
 	err := json.Unmarshal(bytes, &decoded)
@@ -78,7 +78,7 @@ func TestEncoderWithSelfLink(t *testing.T) {
 func TestEncoderWithEmbeddedResources(t *testing.T) {
 	wanted := []string{"/docwhoapi/doctors", "doctors", "name"}
 
-	encoder := NewEncoder()
+	encoder := NewJSONEncoder()
 
 	root := NewResourceObject()
 	link := &LinkObject{Href: wanted[0]}
@@ -111,7 +111,7 @@ func TestEncoderWithEmbeddedResources(t *testing.T) {
 
 	root.AddResource(doctors)
 
-	bytes, _ := encoder.ToJSON(root)
+	bytes, _ := encoder.Encode(root)
 
 	var decoded interface{}
 	err := json.Unmarshal(bytes, &decoded)

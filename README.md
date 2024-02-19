@@ -39,22 +39,28 @@ Import the `hal` package to get started.
 import "github.com/read-with-cortex/hal/hal"
 ```
 ### Create a Resource and JSON generation
+
 First create a Resource Object as your HAL document's root element.
+
 ```go
 root := hal.NewResourceObject()
 ```
+
 This is all you need, to create a valid HAL document.
 
-Next, create an `Encoder` and call it's `ToJSON` function to generate valid JSON.
+Next, create an `Encoder` and call it's `Encode` function to generate valid JSON.
+
 ```go
-encoder := hal.NewEncoder()
-bytes, error := encoder.ToJSON(root)
+encoder := hal.NewJSONEncoder()
+bytes, error := encoder.Encode(root)
 ```
 Generated JSON
 ```JSON
 {}
 ```
+
 There's potential for more :smile:
+
 ### Add a Link Relation
 So let's add a `self` Link Relation. Additionally we attach a single Link Object.
 ```go
@@ -407,13 +413,16 @@ Generated JSON
     }
 }
 ```
+
 A **HAL-FORMS** documents can be created and encoded to **JSON** this way:
+
 ```go
 href := "www.example.com"
 document := NewDocument(href)
-encoder := halforms.NewEncoder()
-bytes, _ := encoder.ToJSON(document) // skipped error handling
+encoder := halforms.NewJSONEncoder()
+bytes, _ := encoder.Encode(document) // skipped error handling
 ```
+
 Generated JSON
 ```JSON
 {
@@ -426,6 +435,7 @@ Generated JSON
     "_templates": {}
 }
 ```
+
 The created document can be enriched with detailed form filed information.
 ```go
 // create a new template describing how to POST a new value to target URI

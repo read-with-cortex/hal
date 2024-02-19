@@ -26,8 +26,8 @@ func TestDocument(t *testing.T) {
 	property.Options = options
 	template.Properties = append(template.Properties, property)
 
-	encoder := NewEncoder()
-	jsonDocument, _ := encoder.ToJSON(document)
+	encoder := NewJSONEncoder()
+	jsonDocument, _ := encoder.Encode(document)
 
 	var decoded interface{}
 	err := json.Unmarshal(jsonDocument, &decoded)
